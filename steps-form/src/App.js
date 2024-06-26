@@ -1,17 +1,13 @@
 import { useState } from "react";
 function App() {
-  //menggunakan variabel
-  // let step = 1;
-
-  //menggunakan use state
+  // const arr = useState({ name: "lala" });
+  // console.log(arr);
   const [step, setStep] = useState(1);
+  const [test] = useState({ name: "lala" });
   function handleNext() {
-    //menggunakan variabel
-    // step += 1;
-    // console.log(step);
-    //menggunakan use state
     if (step < 3) setStep(step + 1);
     console.log(step);
+    test.name = "lyn";
   }
   function handlePrev() {
     if (step > 1) setStep(step - 1);
@@ -23,7 +19,7 @@ function App() {
         <div className={step >= 2 ? "active" : ""}>2</div>
         <div className={step >= 3 ? "active" : ""}>3</div>
       </div>
-      <p className="message">Step : Dream</p>
+      <p className="message">Step : Dream {test.name}</p>
       <div className="buttons">
         <button
           style={{ backgroundColor: "#526D82", color: "#fff" }}
