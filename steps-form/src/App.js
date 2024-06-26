@@ -1,13 +1,12 @@
 import { useState } from "react";
 function App() {
-  // const arr = useState({ name: "lala" });
-  // console.log(arr);
   const [step, setStep] = useState(1);
-  const [test] = useState({ name: "lala" });
+  const [test, setTest] = useState({ name: "lala" });
   function handleNext() {
     if (step < 3) setStep(step + 1);
     console.log(step);
-    test.name = "lyn";
+    //spread operator
+    setTest({ name: "aim" });
   }
   function handlePrev() {
     if (step > 1) setStep(step - 1);
