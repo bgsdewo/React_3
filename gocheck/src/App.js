@@ -19,7 +19,7 @@ function Logo() {
 }
 
 function Form() {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("Coding");
   function handleSubmit(e) {
     e.preventDefault();
   }
