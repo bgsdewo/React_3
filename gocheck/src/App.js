@@ -18,10 +18,16 @@ function Logo() {
 }
 
 function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
+  }
   return (
-    <div className="add-form">
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>Ada yg mau dicatat?</h3>
-    </div>
+      <input type="text" name="title" id="" />
+      <button>Add</button>
+    </form>
   );
 }
 
