@@ -1,14 +1,15 @@
 import { useState } from "react";
-const listItems = [
-  { id: 1, title: "Eat", done: false },
-  { id: 2, title: "Sleep", done: true },
-];
+
 function App() {
+  const [listItems, setListItems] = useState([]);
+  function handleAddItem(item) {
+    setListItems((listItems) => [...listItems, item]);
+  }
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <CheckList />
+      <Form onAddItem={handleAddItem} />
+      <CheckList items={listItems} />
       <Stats />
     </div>
   );
@@ -18,10 +19,21 @@ function Logo() {
   return <span className="logo">Go Check</span>;
 }
 
-function Form() {
-  const [title, setTitle] = useState("Coding");
+function Form({ onAddItem }) {
+  const [title, setTitle] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
+    if (!title) return;
+
+    const newItem = {
+      id: Date.now(),
+      title,
+      done: false,
+    };
+    onAddItem(newItem);
+    setTitle("");
+    console.log(e);
   }
   return (
     <form className="add-form" onSubmit={handleSubmit}>
@@ -38,11 +50,11 @@ function Form() {
   );
 }
 
-function CheckList() {
+function CheckList({ items }) {
   return (
     <div className="list">
       <ul>
-        {listItems.map((item) => (
+        {items.map((item) => (
           <Item key={item.id} item={item} />
         ))}
       </ul>
